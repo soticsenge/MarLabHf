@@ -18,6 +18,7 @@ C_SRCS += \
 ../src/log.c \
 ../src/main.c \
 ../src/mainloop.c \
+../src/segment_display.c \
 ../src/stm32f4xx_it.c \
 ../src/syscalls.c \
 ../src/system_stm32f4xx.c 
@@ -37,6 +38,7 @@ OBJS += \
 ./src/log.o \
 ./src/main.o \
 ./src/mainloop.o \
+./src/segment_display.o \
 ./src/stm32f4xx_it.o \
 ./src/syscalls.o \
 ./src/system_stm32f4xx.o 
@@ -56,6 +58,7 @@ C_DEPS += \
 ./src/log.d \
 ./src/main.d \
 ./src/mainloop.d \
+./src/segment_display.d \
 ./src/stm32f4xx_it.d \
 ./src/syscalls.d \
 ./src/system_stm32f4xx.d 

@@ -80,6 +80,7 @@
 "src/log.o"
 "src/main.o"
 "src/mainloop.o"
+"src/segment_display.o"
 "src/stm32f4xx_it.o"
 "src/syscalls.o"
 "src/system_stm32f4xx.o"

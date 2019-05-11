@@ -20,6 +20,7 @@
 #include "bsp_buttonsswitches.h"
 #include "bsp_uart.h"
 #include "bsp_can.h"
+#include "segment_display.h"
 
 
 /** Inicializálás. Minden alrendszert inicializál. */
@@ -28,9 +29,10 @@ void MainLoop_Init()
 	GlobalFunctions_Init();
 	Log_Init();
 	LocalSensorProcessing_Init();
-	ButtonsSwitches_Init();
-	Graphics_Init();
-	CAN_Init();
+//	ButtonsSwitches_Init();
+	Init7SegDisplays();
+//	Graphics_Init();
+//	CAN_Init();
 
 	Log_LogString("***********************\n\r",LOGLEVEL_NORMAL);
 	Log_LogString("* Kommunikációs mérés *\n\r",LOGLEVEL_NORMAL);

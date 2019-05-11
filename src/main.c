@@ -8,8 +8,11 @@
 
 #include "stm32f4_discovery.h"
 #include "mainloop.h"
+#include "segment_display.h"
 
 static void SystemClock_Config(void);
+
+int steps=0; //TODO init to zero
 
 int main(void)
 {
@@ -24,6 +27,9 @@ int main(void)
 	while (1)
 	{
 		MainLoop_Go();
+
+		displayNumberOfSteps(steps);
+
 	}
 }
 

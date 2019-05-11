@@ -63,7 +63,8 @@ src/main.o: ../src/main.c \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_hcd.h \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/Utilities/STM32F4-Discovery/stm32f4_discovery.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/mainloop.h
+ C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/mainloop.h \
+ C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/segment_display.h
 
 C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/CMSIS/device/stm32f4xx.h:
 
@@ -194,3 +195,5 @@ C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_hcd.h
 C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/Utilities/STM32F4-Discovery/stm32f4_discovery.h:
 
 C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/mainloop.h:
+
+C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/segment_display.h:

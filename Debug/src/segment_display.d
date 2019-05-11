@@ -1,4 +1,4 @@
-src/mainloop.o: ../src/mainloop.c \
+src/segment_display.o: ../src/segment_display.c \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/CMSIS/device/stm32f4xx.h \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/CMSIS/device/stm32f407xx.h \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/CMSIS/core/core_cm4.h \
@@ -61,16 +61,7 @@ src/mainloop.o: ../src/mainloop.c \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_hcd.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_globalfunctions.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/log.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/localsensorprocessing.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/graphics.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_buttonsswitches.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_uart.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_can.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/segment_display.h
+ C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_hcd.h
 
 C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/CMSIS/device/stm32f4xx.h:
 
@@ -197,21 +188,3 @@ C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
 
 C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_hcd.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/HAL_Driver/Inc/stm32f4xx_hal_cortex.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_globalfunctions.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/log.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/localsensorprocessing.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/graphics.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_buttonsswitches.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_uart.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_can.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/segment_display.h:
