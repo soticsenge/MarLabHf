@@ -1,4 +1,4 @@
-﻿/** TODO 1. SPI Feladat
+﻿ /** TODO 1. SPI Feladat
  * Az SPI kommunikációs feladatot ebben és a bsp_accelerometer.c fájlban oldja meg.
  * Ebben a fájlban a feladat az SPI kommunikáció inicializálása
  *  (SPI_Init() és HAL_SPI_MspInit() függvények), valamint az alapvető

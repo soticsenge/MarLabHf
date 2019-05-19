@@ -28,7 +28,7 @@ void ButtonsSwitches_Init()
 	GPIO_InitTypeDef portInit;
 
 
-	//7seg button
+	//button
 	portInit.Mode = GPIO_MODE_INPUT;
 	portInit.Pull = GPIO_PULLUP;;
 	portInit.Speed = GPIO_SPEED_FAST;
@@ -54,7 +54,7 @@ void ButtonsSwitches_Init()
 
 
 
-		GPIOC->ODR=0x0006;
+	//	GPIOC->ODR=0x0006;
 
 
 	//7seg en
@@ -71,6 +71,7 @@ void ButtonsSwitches_Init()
 	HAL_GPIO_WritePin(GPIOC,GPIO_PIN_9, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOC,GPIO_PIN_9, GPIO_PIN_SET);
 
+	GPIOC->ODR=0x007F;
 
 
 //	portInit.Mode = GPIO_MODE_INPUT;

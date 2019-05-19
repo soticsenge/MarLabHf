@@ -69,8 +69,7 @@ src/mainloop.o: ../src/mainloop.c \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/graphics.h \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_buttonsswitches.h \
  C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_uart.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_can.h \
- C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/segment_display.h
+ C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_can.h
 
 C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/CMSIS/device/stm32f4xx.h:
 
@@ -213,5 +212,3 @@ C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_buttonsswitches.h:
 C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_uart.h:
 
 C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/bsp_can.h:
-
-C:/Users/Csenge/Desktop/MARLAB/MARCOM2/MARCOM/inc/segment_display.h:

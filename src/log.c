@@ -26,12 +26,12 @@ void Log_Init()
 void Log_LogString(char *text, unsigned int logLevel)
 {
 	// Ha eleg magas a logLevel, akkor kiirjuk USART-on a terminalra
-	if (logLevel>=currentLogLevel)
-	{
+	//if (logLevel>=currentLogLevel)
+	//{
 		// TODO 4.2. Kiegészítő feladat: USB-VCP naplózás
 		// Jelenítse meg a log üzeneteket az USB kapcsolaton keresztül is.
 		UART_SendString(text);
-	}
+	//}
 }
 
 /** String és HAL status kiírása a log-ba. A logLevel a LOGLEVEL_ kezdetű konstansok egyike. */
@@ -43,12 +43,4 @@ void Log_LogStringAndHalStatus(char *text, unsigned int logLevel, HAL_StatusType
 			(status==HAL_BUSY ? "BUSY" :
 			(status==HAL_TIMEOUT ? "TIMEOUT" : "UNKNOWN")));
 
-	if (logLevel>=currentLogLevel)
-	{
-		char buffer[255];
-		sprintf(buffer, "%s (%s)\n\r", text, statusString);
-		// TODO 4.2. Kiegészítő feladat: USB-VCP naplózás
-		// Jelenítse meg a log üzeneteket az USB kapcsolaton keresztül is.
-		UART_SendString(buffer);
-	}
 }

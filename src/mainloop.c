@@ -20,30 +20,29 @@
 #include "bsp_buttonsswitches.h"
 #include "bsp_uart.h"
 #include "bsp_can.h"
-#include "segment_display.h"
 
+
+int steps=0;
+int stepTimeStamps[9999];
+char buffer[8];
+
+
+void  addStep()
+{
+	stepTimeStamps[steps] = HAL_GetTick();
+	steps++;
+}
 
 /** Inicializálás. Minden alrendszert inicializál. */
 void MainLoop_Init()
 {
 	GlobalFunctions_Init();
 	Log_Init();
-	LocalSensorProcessing_Init();
-//	ButtonsSwitches_Init();
-	Init7SegDisplays();
+//	LocalSensorProcessing_Init();
+	ButtonsSwitches_Init();
 //	Graphics_Init();
 //	CAN_Init();
 
-	Log_LogString("***********************\n\r",LOGLEVEL_NORMAL);
-	Log_LogString("* Kommunikációs mérés *\n\r",LOGLEVEL_NORMAL);
-	Log_LogString("*       BME AUT       *\n\r",LOGLEVEL_NORMAL);
-	Log_LogString("***********************\n\r\n\r",LOGLEVEL_NORMAL);
-
-	localZoneID = ButtonsSwitches_GetLocalZoneID();
-
-	char buffer[100];
-	snprintf(buffer,100,"Saját zóna azonosítója: %u\n\r",localZoneID);
-	Log_LogString(buffer,LOGLEVEL_NORMAL);
 
 	// Elso alkalommal jelenjen meg minden...
 	hasAnyZoneStatusChanged = 1;
@@ -51,16 +50,26 @@ void MainLoop_Init()
 	hasSensorDataChanged = 1;
 }
 
+
+
+
+
 /** A főciklus egy iterációját összefogó függvény. */
 void MainLoop_Go()
 {
 
 	int tmp = 0;
 
-	Log_LogString("MAINLOOP: Főciklus - új iteráció\n\r",LOGLEVEL_DETAILED);
+	//Log_LogString("MAINLOOP: Főciklus - új iteráció\n\r",LOGLEVEL_DETAILED);
 
 	tmp = (ButtonsSwitches_GetTestButtonState());
 
+
+	if(!tmp) {
+		addStep();
+	//	Log_LogString("AAA" ,0);
+	}
+	displayNumberOfSteps(steps);
 //	// Érzékelõk kezelése
 //	LocalSensorProcessing_Go();
 //	// CAN kommunikáció kezelése
@@ -70,6 +79,23 @@ void MainLoop_Go()
 
 
 
+	if(lastReceivedUartCommand=='L'){
+		int i=0;
+
+		itoa(HAL_GetTick(), buffer, 10);
+		Log_LogString(buffer,0);
+		Log_LogString("\n",0);
+
+		while (i<steps){
+			itoa(stepTimeStamps[i], buffer, 10);
+			Log_LogString(buffer,0);
+			Log_LogString("\n",0);
+
+			i++;
+		}
+		Log_LogString("EOM\n",0);
+			lastReceivedUartCommand=0;
+	}
 
 
 	// UART adatfogadás kezelése
@@ -83,39 +109,7 @@ void MainLoop_Go()
 	// - 'q': Query log level: Küldje el a logra hogy most éppen milyen log level van kiválasztva.
 	// - Ismeretlen parancs karakter esetén küldjön hibaüzenetet.
 
-//	IF (LASTRECEIVEDUARTCOMMAND!=0)
-//	{
-//		SWITCH (LASTRECEIVEDUARTCOMMAND)
-//		{
-//		CASE 'G':	// GREETING
-//			LOG_LOGSTRING("HELLO!\N\R",LOGLEVEL_NORMAL);
-//			BREAK;
-//		CASE 'N':	// NORMAL LOG LEVEL
-//			CURRENTLOGLEVEL = LOGLEVEL_NORMAL;
-//			LOG_LOGSTRING("LOG LEVEL: NORMAL\N\R",LOGLEVEL_NORMAL);
-//			BREAK;
-//		CASE 'D':	// DETAILED LOG LEVEL
-//			CURRENTLOGLEVEL = LOGLEVEL_DETAILED;
-//			LOG_LOGSTRING("LOG LEVEL: DETAILED\N\R",LOGLEVEL_NORMAL);
-//			BREAK;
-//		CASE 'Q':	// QUERY LOG LEVEL
-//			IF (CURRENTLOGLEVEL == LOGLEVEL_DETAILED)
-//			{
-//				LOG_LOGSTRING("LOG LEVEL: DETAILED\N\R",LOGLEVEL_NORMAL);
-//			}
-//			ELSE
-//			{
-//				LOG_LOGSTRING("LOG LEVEL: NORMAL\N\R",LOGLEVEL_NORMAL);
-//			}
-//			BREAK;
-//		DEFAULT:
-//			LOG_LOGSTRING("ISMERETLEN PARANCS!\N\R",LOGLEVEL_NORMAL);
-//			BREAK;
-//		}
-//		LASTRECEIVEDUARTCOMMAND=0;
-	}
 
-	
 	// TODO 5.2. kiegészítő feladat: USB-VCP adatfogadás kezelése
 	// A fenti UART-os példával megegyező módon valósítsa meg az adatfogadást az USB-VCP-ről is.
 	// Használja az előző feladatban megvalósított CDC_READ_FS() függvényt (usbd_cdc_if.c)
@@ -133,4 +127,4 @@ void MainLoop_Go()
 //	hasAnyZoneStatusChanged = 0;
 //	hasLocalZoneStatusChanged = 0;
 //	hasSensorDataChanged = 0;
-//}
+}

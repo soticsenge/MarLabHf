@@ -12,7 +12,7 @@
 
 static void SystemClock_Config(void);
 
-int steps=0; //TODO init to zero
+
 
 int main(void)
 {
@@ -28,7 +28,7 @@ int main(void)
 	{
 		MainLoop_Go();
 
-		displayNumberOfSteps(steps);
+
 
 	}
 }

@@ -57,7 +57,7 @@ HAL_StatusTypeDef UART_Init()
 	//	engedélyezni kell (UART_MODE_TX_RX). Az oversampling 16.
 	// A baud rate kivételével mindenre van előre definiált konstans UART_ kezdettel.
 	// Figyelem: A HAL_UART_Init() paramétere pointer típusú kell, hogy legyen!
-	huart.Instance = USART3;
+	huart.Instance = USART2;
 	huart.Init.BaudRate = 115200;
 	huart.Init.HwFlowCtl = UART_HWCONTROL_NONE;
 	huart.Init.Mode = UART_MODE_TX_RX;
@@ -66,6 +66,7 @@ HAL_StatusTypeDef UART_Init()
 	huart.Init.WordLength = UART_WORDLENGTH_8B;
 	huart.Init.OverSampling = UART_OVERSAMPLING_16;
 	HAL_UART_Init(&huart);
+
 
 	// Kiegészítő feladat a mérés végére: itt kell engedélyezni az adatok fogadását.
 	// Ehhez kérje 1 byte fogadását az rxBuffer-be, nem blokkoló módon a
@@ -102,7 +103,8 @@ HAL_StatusTypeDef UART_SendString(char *str)
     	*(txBuffer+length) = *(str+length);
     	length++;
     }
-	return HAL_UART_Transmit_IT(&huart, (uint8_t*)txBuffer, length);
+	//return HAL_UART_Transmit_IT(&huart, (uint8_t*)txBuffer, length);
+    HAL_UART_Transmit(&huart, (uint8_t*)txBuffer, length,1000);
 	return HAL_OK;
 }
 
@@ -116,8 +118,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* handle)
 
 	// Egyrészt engedélyezni kell a szükséges órajeleket (USART3 és GPIO D port)
 	//	az __<periférianév>_CLK_ENABLE() makrók segítségével.
-	__USART3_CLK_ENABLE();
-	__GPIOD_CLK_ENABLE();
+	__USART2_CLK_ENABLE();
+	__GPIOA_CLK_ENABLE();
+
 
 	// Majd létre kell hozni egy GPIO_InitTypeDef típusú változót és annak kitöltésével, majd a HAL_GPIO_Init()
 	//	meghívásával beállítani a lábakat. Mindenre van előre definiált konstans GPIO_ kezdettel.
@@ -130,15 +133,16 @@ void HAL_UART_MspInit(UART_HandleTypeDef* handle)
 	portInit.Mode = GPIO_MODE_AF_PP;
 	portInit.Pull = GPIO_NOPULL;
 	portInit.Speed = GPIO_SPEED_FAST;
-	portInit.Pin = GPIO_PIN_8 | GPIO_PIN_9;
-	portInit.Alternate = GPIO_AF7_USART3;
-	HAL_GPIO_Init(GPIOD, &portInit);
+	portInit.Pin = GPIO_PIN_2 | GPIO_PIN_3;
+	portInit.Alternate = GPIO_AF7_USART2;
+	HAL_GPIO_Init(GPIOA, &portInit);
 
 	// Engedélyezze az USART3_IRQn megszakítást 0 Preempt és subpriority-val a
 	//	HAL_NVIC_SetPriority() és HAL_NVIC_EnableIRQ() függvények segítségével.
 
-	HAL_NVIC_SetPriority(USART3_IRQn,0,0);
-	HAL_NVIC_EnableIRQ(USART3_IRQn);
+	HAL_NVIC_SetPriority(USART2_IRQn,0,0);
+	HAL_NVIC_EnableIRQ(USART2_IRQn);
+;
 }
 
 /* ----------------- Megszakításkezelő és callback függvények ----------------- */
@@ -158,7 +162,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *handle)
 }
 
 /** Interrupt kezelő. */
-void USART3_IRQHandler(void)
+void USART2_IRQHandler(void)
 {
 	HAL_UART_IRQHandler(&huart);
 }
