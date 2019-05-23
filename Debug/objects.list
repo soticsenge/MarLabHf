@@ -68,7 +68,6 @@
 "HAL_Driver/Src/stm32f4xx_ll_usb.o"
 "src/bsp_accelerometer.o"
 "src/bsp_buttonsswitches.o"
-"src/bsp_can.o"
 "src/bsp_glcd.o"
 "src/bsp_globalfunctions.o"
 "src/bsp_i2c.o"

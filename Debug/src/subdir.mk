@@ -6,7 +6,6 @@
 C_SRCS += \
 ../src/bsp_accelerometer.c \
 ../src/bsp_buttonsswitches.c \
-../src/bsp_can.c \
 ../src/bsp_glcd.c \
 ../src/bsp_globalfunctions.c \
 ../src/bsp_i2c.c \
@@ -26,7 +25,6 @@ C_SRCS += \
 OBJS += \
 ./src/bsp_accelerometer.o \
 ./src/bsp_buttonsswitches.o \
-./src/bsp_can.o \
 ./src/bsp_glcd.o \
 ./src/bsp_globalfunctions.o \
 ./src/bsp_i2c.o \
@@ -46,7 +44,6 @@ OBJS += \
 C_DEPS += \
 ./src/bsp_accelerometer.d \
 ./src/bsp_buttonsswitches.d \
-./src/bsp_can.d \
 ./src/bsp_glcd.d \
 ./src/bsp_globalfunctions.d \
 ./src/bsp_i2c.d \

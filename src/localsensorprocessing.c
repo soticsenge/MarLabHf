@@ -51,17 +51,17 @@ uint8_t prevTestSwitchState = 0;
 void LocalSensorProcessing_Init()
 {
 	Thermometer_Init();
-	Accelerometer_Init();
+	// Accelerometer_Init();
 
-	char buffer[100];
+	//char buffer[100];
 	// Referencia hőmérséklet lekérdezése. A riasztás eldöntésekor ehhez viszonyítunk majd.
 	// Get temperature data, set referenceTemperature
-	referenceTemperature = Thermometer_GetTemperature();
-	snprintf(buffer,100,"Referencia hőmérséklet: %d\n\r",referenceTemperature);
-	Log_LogString(buffer,LOGLEVEL_NORMAL);
+	//referenceTemperature = Thermometer_GetTemperature();
+	//snprintf(buffer,100,"Referencia hőmérséklet: %d\n\r",referenceTemperature);
+	//Log_LogString(buffer,LOGLEVEL_NORMAL);
 
 	// Saját zóna azonosító lekérdezése
-	localZoneID = ButtonsSwitches_GetLocalZoneID();
+	//localZoneID = ButtonsSwitches_GetLocalZoneID();
 
 }
 

@@ -27,6 +27,16 @@ void ButtonsSwitches_Init()
 	// Configure switch inputs
 	GPIO_InitTypeDef portInit;
 
+	 GPIO_InitTypeDef GPIO_InitStruct = {0};
+	 GPIO_InitStruct.Pin = GPIO_PIN_1;
+	 GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+	 GPIO_InitStruct.Pull = GPIO_PULLUP;
+	 HAL_GPIO_Init(GPIO_PIN_1, &GPIO_InitStruct);
+
+	 HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
+	 HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
+
 
 	//button
 	portInit.Mode = GPIO_MODE_INPUT;
@@ -119,3 +129,5 @@ uint8_t ButtonsSwitches_GetLocalZoneID()
 
 	return localZoneID;
 }
+
+

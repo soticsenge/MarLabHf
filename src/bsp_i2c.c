@@ -41,12 +41,13 @@ HAL_StatusTypeDef I2C_Init(uint32_t ownAddress)
 	// (Az OwnAddress2 beállítása nem szükséges. Annak csak dual addressing mode esetén van értelme.)
 	hi2c.Instance = I2C1;
 	hi2c.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-	hi2c.Init.ClockSpeed = 100000;
+	hi2c.Init.ClockSpeed = 50000;
 	hi2c.Init.DualAddressMode = I2C_DUALADDRESS_DISABLED;
 	hi2c.Init.DutyCycle = I2C_DUTYCYCLE_2;
 	hi2c.Init.GeneralCallMode = I2C_GENERALCALL_DISABLED;
 	hi2c.Init.NoStretchMode = I2C_NOSTRETCH_DISABLED;
 	hi2c.Init.OwnAddress1 = ownAddress;
+
 	return HAL_I2C_Init(&hi2c);
 	return HAL_OK;
 }
@@ -95,7 +96,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *handle)
 	portInit.Mode = GPIO_MODE_AF_OD;
 	portInit.Pull = GPIO_PULLUP;
 	portInit.Speed = GPIO_SPEED_FAST;
-	portInit.Pin = GPIO_PIN_6 | GPIO_PIN_9;
+	portInit.Pin = GPIO_PIN_8 | GPIO_PIN_9;
 	portInit.Alternate = GPIO_AF4_I2C1;
 	HAL_GPIO_Init(GPIOB, &portInit);
 }

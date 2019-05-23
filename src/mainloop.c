@@ -22,15 +22,15 @@
 #include "bsp_can.h"
 
 
-int steps=0;
+int stepCount=0;
 int stepTimeStamps[9999];
 char buffer[8];
 
 
 void  addStep()
 {
-	stepTimeStamps[steps] = HAL_GetTick();
-	steps++;
+	stepTimeStamps[stepCount] = HAL_GetTick();
+	stepCount++;
 }
 
 /** Inicializálás. Minden alrendszert inicializál. */
@@ -38,7 +38,7 @@ void MainLoop_Init()
 {
 	GlobalFunctions_Init();
 	Log_Init();
-//	LocalSensorProcessing_Init();
+	LocalSensorProcessing_Init();
 	ButtonsSwitches_Init();
 //	Graphics_Init();
 //	CAN_Init();
@@ -69,7 +69,7 @@ void MainLoop_Go()
 		addStep();
 	//	Log_LogString("AAA" ,0);
 	}
-	displayNumberOfSteps(steps);
+	displayNumberOfSteps(stepCount);
 //	// Érzékelõk kezelése
 //	LocalSensorProcessing_Go();
 //	// CAN kommunikáció kezelése
@@ -86,7 +86,7 @@ void MainLoop_Go()
 		Log_LogString(buffer,0);
 		Log_LogString("\n",0);
 
-		while (i<steps){
+		while (i<stepCount){
 			itoa(stepTimeStamps[i], buffer, 10);
 			Log_LogString(buffer,0);
 			Log_LogString("\n",0);

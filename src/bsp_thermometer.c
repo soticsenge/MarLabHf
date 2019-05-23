@@ -10,8 +10,8 @@
 
 /* ----------------- Belső, globális változók ----------------- */
 
-const uint8_t TempAddr = (uint8_t)0x30;
-const uint8_t TempConfReg = (uint8_t)0x08;
+const uint8_t TempAddr = (uint8_t)0xD7;
+const uint8_t TempConfReg = (uint8_t)0x0F;
 const uint8_t TempReg = (uint8_t)0x05;
 
 /* ----------------- Publikus függvények ----------------- */
@@ -19,7 +19,7 @@ const uint8_t TempReg = (uint8_t)0x05;
 /** Inicializálás. */
 HAL_StatusTypeDef Thermometer_Init()
 {
-	HAL_StatusTypeDef result = I2C_Init(0xA0);
+	HAL_StatusTypeDef result = I2C_Init(0);
 	if (result != HAL_OK)
 	{
 		Log_LogStringAndHalStatus("Thermometer_Init(): I2C_Init() sikertelen.", LOGLEVEL_NORMAL, result);
@@ -28,12 +28,16 @@ HAL_StatusTypeDef Thermometer_Init()
 
 	// Init: 8-as regiszterbe 00-t írunk.
 	uint8_t data = 0;
-	result = I2C_WriteRegister(TempAddr, TempConfReg, &data, 1);
-	if (result != HAL_OK)
-	{
-		Log_LogStringAndHalStatus("Thermometer_Init(): hőmérő inicializálás sikertelen.", LOGLEVEL_NORMAL, result);
-		return result;
-	}
+	uint8_t data2 = 0x80;
+	uint8_t data3 = 0x40;
+	result = I2C_ReadRegister(TempAddr, TempConfReg, &data, 1);
+	result = I2C_WriteRegister(TempAddr, 0x0D, &data2, 1);
+	result = I2C_WriteRegister(TempAddr, 0x58, &data3, 1);
+//	if (result != HAL_OK)
+//	{
+//		Log_LogStringAndHalStatus("Thermometer_Init(): hőmérő inicializálás sikertelen.", LOGLEVEL_NORMAL, result);
+//		return result;
+//	}
 	return HAL_OK;
 }
 

@@ -16,6 +16,8 @@
 #endif
 #include "stm32f4xx_it.h"
 
+int steps = 0;
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -39,4 +41,9 @@ void SysTick_Handler(void)
 #ifdef USE_RTOS_SYSTICK
 	osSystickHandler();
 #endif
+}
+
+void EXTI1_IRQHandler(void)
+{
+	steps ++;
 }
